@@ -32,6 +32,10 @@ app.use('/payment', PaymentRouter)
 app.use(express.urlencoded({ extended: false }))
 app.use('/public',express.static('public'))
 
+app.get('/', (req, res)=> {
+    res.send('server is running at port 5000')
+})
+
 app.listen(5000,()=>{
     connectDb()
     console.log(`server is running on port 5000`)
