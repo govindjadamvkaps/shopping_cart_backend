@@ -20,8 +20,8 @@ export async function postPayment(req, res) {
               },
             ],
             mode: 'payment',
-            success_url: "http://localhost:3000/checkout-success",
-            cancel_url: "http://localhost:3000"
+            success_url: "https://shopping-cart-app-ashen.vercel.app/checkout-success",
+            cancel_url: "https://shopping-cart-app-ashen.vercel.app/"
           });
         // console.log('stripe response', session)
         // console.log("response url", session.url)
