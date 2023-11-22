@@ -6,6 +6,8 @@ const stripe = Stripe("sk_test_51N95AXSARt03c6c9ZxzE47HlnONBrXnsyKaiHADxONZ048sF
 
 export async function postPayment(req, res) {
     try {
+      const { amount , userId,cartId} = req.body
+
         const session = await stripe.checkout.sessions.create({
             line_items: [
               {
@@ -20,7 +22,7 @@ export async function postPayment(req, res) {
               },
             ],
             mode: 'payment',
-            success_url: "https://shopping-cart-app-ashen.vercel.app/checkout-success",
+            success_url: `https://shopping-cart-app-ashen.vercel.app/checkout-success?userId=${userId}&amount=${amount}&cartId=${cartId}`,
             cancel_url: "https://shopping-cart-app-ashen.vercel.app/"
           });
         // console.log('stripe response', session)
@@ -28,7 +30,6 @@ export async function postPayment(req, res) {
 
           // store payment details in database
 
-          const { amount , userId,cartId} = req.body
 
           const payment = PaymentModel({amount, userId, transactionId:session.id,cartId})
 
