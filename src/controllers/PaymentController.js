@@ -31,7 +31,7 @@ export async function postPayment(req, res) {
           // store payment details in database
 
 
-          const payment = PaymentModel({amount, userId, transactionId:session.id,cartId})
+          const payment = PaymentModel({amount, userId, transactionId:session.id,cartId,cart_Id})
 
           const savedPaymentDetails = await payment.save()
           console.log("payment details", savedPaymentDetails)

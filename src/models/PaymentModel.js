@@ -17,7 +17,8 @@ const paymentSchema = new mongoose.Schema({
         type:Object
       },
       cart_Id:{
-        type:String
+        type:mongoose.Schema.Types.ObjectId,
+        ref : 'cart'
       }
 },{
     timestamps:true
